@@ -7,7 +7,7 @@ It is not a calculator simulating a physical calculator with buttons: that would
 
 The REPL process use the reverse polish notation. It works thanks to a stack (LIFO) of operands, powered by successive user inputs, when you enter an operand (i.e. usually a number), it is added to the top of the stack; when we enter an operation, the operands in necessary quantity are unstacked (taken out of the top of the stack), the computation is carried out, then the result is stacked.
 
-## How it is supposed to be used?
+## How is it supposed to be used?
 
 It is really simple! Just use the following command :
 ``` 
