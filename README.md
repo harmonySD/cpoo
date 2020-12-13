@@ -10,10 +10,14 @@ The REPL process use the reverse polish notation. It works thanks to a stack (LI
 ## How it is supposed to be used?
 
 It is really simple! Just use the following command :
-``` javac UserInterface.java ```
+``` 
+javac UserInterface.java
+```
 
 then ...
-```java UserInterface ```
+```
+java UserInterface 
+```
 
 and now enter some operands!
 
