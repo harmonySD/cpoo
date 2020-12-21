@@ -30,7 +30,7 @@ public class UserInterface {
             input = getInput();
             Expression lastExprEntered = new BopExpression(input);
             System.out.println(lastExprEntered.getValue(stack));
-
+            
             if (input.equals("q") || input.equals("quit")) {
                 readyToQuit = true;
             }
