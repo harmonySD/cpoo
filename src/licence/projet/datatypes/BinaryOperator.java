@@ -1,5 +1,6 @@
 package licence.projet.datatypes;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Stack;
 
@@ -22,17 +23,18 @@ public class BinaryOperator implements Expression {
             case "/":
                 return val1 / val2;
             default:
-                throw new IllegalArgumentException("Operator " + op + "was not recognized!");
+                throw new IllegalArgumentException("Operator " + op + " was not recognized!");
         }
     }
 
-    public double getValue(Stack<Double> stack) {
+    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
         if (!(stack.empty()) && stack.size() > 1) {
             double val1, val2, res;
             val2 = stack.pop();
             val1 = stack.pop();
             res = compute(val1, val2);
             stack.push(res);
+            hist.add(res);
             return res;
         } else {
             throw new IllegalStateException("Not enough operand in stack!");
