@@ -15,4 +15,9 @@ public class RealNumber implements Expression {
         hist.add(value);
         return value;
     }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
+    }
 }

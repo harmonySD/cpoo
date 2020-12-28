@@ -22,6 +22,8 @@ public class BinaryOperator implements Expression {
                 return val1 * val2;
             case "/":
                 return val1 / val2;
+            case "^":
+                return Math.pow(val1, val2);
             default:
                 throw new IllegalArgumentException("Operator " + op + " was not recognized!");
         }
@@ -42,5 +44,10 @@ public class BinaryOperator implements Expression {
         } else {
             throw new IllegalArgumentException("Not enough operand in stack!");
         }
+    }
+
+    @Override
+    public String toString() {
+        return op;
     }
 }
