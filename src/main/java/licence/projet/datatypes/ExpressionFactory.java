@@ -1,19 +1,10 @@
 package licence.projet.datatypes;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//Binary Operator Expression (ie "7 + 5 * 4.2")
-public class GeneralExpression implements Expression {
-    private final String[] innerExpressions;
-
-    public GeneralExpression(String stringOfExpr) {
-        Objects.requireNonNull(stringOfExpr);
-        this.innerExpressions = stringOfExpr.split(" ");
-    }
+//Factory Pattern
+public class ExpressionFactory {
 
     private boolean isCallback(String input) {
         //Checking if user input is a callback (either from stack or history)
@@ -23,7 +14,7 @@ public class GeneralExpression implements Expression {
         return matcher.find();
     }
 
-    private Expression getExprFromString(String exprString) {
+    public Expression getExprFromString(String exprString) {
         Expression expr;
         try {
             double value = Double.parseDouble(exprString);
@@ -41,18 +32,4 @@ public class GeneralExpression implements Expression {
         return expr;
     }
 
-    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
-        if (innerExpressions.length < 1) {
-            throw new IllegalStateException("An expression shouldn't be empty!");
-        }
-
-        int i;
-        double res = 0;
-
-        for (i = 0; i < innerExpressions.length; i++) {
-            String exprString = innerExpressions[i];
-            res = getExprFromString(exprString).getValue(stack, hist);
-        }
-        return res;
-    }
 }

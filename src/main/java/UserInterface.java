@@ -1,4 +1,4 @@
-import licence.projet.datatypes.GeneralExpression;
+import licence.projet.datatypes.ExpressionFactory;
 import licence.projet.datatypes.Expression;
 
 import java.io.BufferedReader;
@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class UserInterface {
 
@@ -38,9 +36,22 @@ public class UserInterface {
                 continue;
             }
 
-            Expression lastExprEntered = new GeneralExpression(input);
-            System.out.println(lastExprEntered.getValue(stack, hist));
+            String[] innerExpressions = input.split(" ");
+            if (innerExpressions.length < 1) {
+                throw new IllegalStateException("An expression shouldn't be empty!");
+            }
 
+            ExpressionFactory exprFact = new ExpressionFactory();
+            for (String exprString : innerExpressions) {
+                try {
+                    Expression lastExprEntered = exprFact.getExprFromString(exprString);
+                    lastExprEntered.getValue(stack, hist);
+                    int index = stack.size() - 1;
+                    System.out.println(stack.get(index));
+                } catch (IllegalArgumentException illegalArgumentException) {
+                    illegalArgumentException.printStackTrace();
+                }
+            }
         }
     }
 }
