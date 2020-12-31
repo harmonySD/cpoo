@@ -22,6 +22,8 @@ public class BinaryOperator implements Expression {
                 return val1 * val2;
             case "/":
                 return val1 / val2;
+            case "^":
+                return Math.pow(val1, val2);
             default:
                 throw new IllegalArgumentException("Operator " + op + " was not recognized!");
         }
@@ -30,14 +32,22 @@ public class BinaryOperator implements Expression {
     public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
         if (!(stack.empty()) && stack.size() > 1) {
             double val1, val2, res;
-            val2 = stack.pop();
-            val1 = stack.pop();
-            res = compute(val1, val2);
+            int size = stack.size();
+            val2 = stack.get(size - 1);
+            val1 = stack.get(size - 2);
+            res = compute(val1, val2); //on compute d'abord pour verifier que l'operateur rentre est correct
+            stack.pop(); //on supprime de la pile val2
+            stack.pop(); //on supprime de la pile val1
             stack.push(res);
             hist.add(res);
             return res;
         } else {
-            throw new IllegalStateException("Not enough operand in stack!");
+            throw new IllegalArgumentException("Not enough operand in stack!");
         }
+    }
+
+    @Override
+    public String toString() {
+        return op;
     }
 }
