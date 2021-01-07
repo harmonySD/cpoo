@@ -1,0 +1,11 @@
+licence/projet/datatypes/ExpressionFactory.class
+licence/projet/datatypes/SymbNumber.class
+licence/projet/datatypes/SimpleCallback.class
+licence/projet/datatypes/RealNumber.class
+UserInterface.class
+licence/projet/datatypes/StackCallback.class
+licence/projet/datatypes/HistCallback.class
+licence/projet/datatypes/Callback.class
+licence/projet/datatypes/Expression.class
+licence/projet/datatypes/CallbackFactory.class
+licence/projet/datatypes/BinaryOperator.class

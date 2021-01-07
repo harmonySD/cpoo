@@ -9,7 +9,7 @@ public class HistCallback extends SimpleCallback {
         super(index);
     }
 
-    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
+    public String getValue(Stack<String> stack, ArrayList<String> hist) {
         return callback(hist, stack, hist);
     }
 }

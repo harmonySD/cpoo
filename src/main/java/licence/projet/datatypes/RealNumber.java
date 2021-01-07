@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class RealNumber implements Expression {
-    private final double value;
+    private final String value;
 
-    public RealNumber(double value) {
+    public RealNumber(String value) {
         this.value = value;
     }
 
-    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
+    public String getValue(Stack<String> stack, ArrayList<String> hist) {
         stack.push(value);
         hist.add(value);
         return value;
@@ -18,6 +18,7 @@ public class RealNumber implements Expression {
 
     @Override
     public String toString() {
-        return Double.toString(value);
+        return value;
     }
+   
 }

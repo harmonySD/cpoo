@@ -11,9 +11,9 @@ public abstract class SimpleCallback implements Callback, Expression {
         this.index = index;
     }
 
-    public double callback(AbstractList<Double> lst, Stack<Double> stack, ArrayList<Double> hist) {
+    public String callback(AbstractList<String> lst, Stack<String> stack, ArrayList<String> hist) {
         int index;
-        double val;
+        String val;
 
         index = getPositiveIndex(lst);
         val = lst.get(index);
@@ -22,7 +22,7 @@ public abstract class SimpleCallback implements Callback, Expression {
         return val;
     }
 
-    private int getPositiveIndex(AbstractList<Double> lst) {
+    private int getPositiveIndex(AbstractList<String> lst) {
         if (index >= 0) {
             return index;
         } else {

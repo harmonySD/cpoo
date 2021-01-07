@@ -22,7 +22,7 @@ public class UserInterface {
         }
     }
 
-    private static void parseInput(String input, ExpressionFactory exprFact, Stack<Double> stack, ArrayList<Double> hist) {
+    private static void parseInput(String input, ExpressionFactory exprFact, Stack<String> stack, ArrayList<String> hist) {
         String[] innerExpressions = input.split(" ");
         if (innerExpressions.length < 1) {
             System.out.println("An expression shouldn't be empty!");
@@ -44,8 +44,8 @@ public class UserInterface {
 
     public static void main(String[] args) {
         boolean readyToQuit = false;
-        Stack<Double> stack = new Stack<>();
-        ArrayList<Double> hist = new ArrayList<>();
+        Stack<String> stack = new Stack<>();
+        ArrayList<String> hist = new ArrayList<>();
         String input;
         ExpressionFactory exprFact = new ExpressionFactory();
 

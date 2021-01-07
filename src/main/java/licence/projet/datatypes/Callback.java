@@ -5,5 +5,5 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public interface Callback {
-    double callback(AbstractList<Double> lst, Stack<Double> stack, ArrayList<Double> hist);
+    String callback(AbstractList<String> lst, Stack<String> stack, ArrayList<String> hist);
 }
