@@ -14,7 +14,7 @@ public class CallbackFactory {
         this.variables = new HashMap<>();
     }
 
-    public SimpleCallback getCallback(String callbckType, Stack<Double> stack) {
+    public SimpleCallback getCallback(String callbckType, Stack<String> stack) {
         //On verifie pour les rappels avec des variables
         Pattern pattern = Pattern.compile("^!|^\\?");
         Matcher matcher = pattern.matcher(callbckType);
@@ -24,7 +24,8 @@ public class CallbackFactory {
             accessType = matcher.group(0);
             if (accessType.equals("!")) {
                 if (!variables.keySet().contains(name)) {
-                    double value = stack.pop();
+                    String val = stack.pop();
+                    double value = Double.parseDouble(val);
                     VarCallback varCallback = new VarCallback(name, value);
                     variables.put(name, varCallback);
                     return varCallback;

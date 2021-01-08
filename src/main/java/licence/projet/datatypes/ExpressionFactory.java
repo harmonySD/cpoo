@@ -24,7 +24,7 @@ public class ExpressionFactory {
         return BinaryOperatorExpr.isOperator(input);
     }
 
-    public Expression getExprFromString(String exprString, Stack<Double> stack) {
+    public Expression getExprFromString(String exprString, Stack<String> stack) {
         Expression expr;
         try {
             double value = Double.parseDouble(exprString);

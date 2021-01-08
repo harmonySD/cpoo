@@ -17,14 +17,14 @@ public class VarCallback extends SimpleCallback {
         set = false;
     }
 
-    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
+    public String getValue(Stack<String> stack, ArrayList<String> hist) {
         if (set) {
-            stack.push(value);
-            hist.add(value);
-            return value;
+            stack.push(Double.toString(value));
+            hist.add(Double.toString(value));
+            return Double.toString(value);
         } else {
             set = true;
-            return value;
+            return Double.toString(value);
         }
     }
 }

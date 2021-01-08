@@ -52,20 +52,20 @@ public class BinaryOperatorExpr implements Expression {
         }
     }
 
-    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
+    public String getValue(Stack<String> stack, ArrayList<String> hist) {
         if (!(stack.empty()) && stack.size() > 1) {
             double val1, val2, res;
             //On recupere sans pop pour ne pas les enlever de la pile au cas ou on ne terminerait pas le calcul (divsion par 0 par exemple)
             int size = stack.size();
-            val2 = stack.get(size-1);
-            val1 = stack.get(size-2);
+            val2 = Double.parseDouble(stack.get(size-1));
+            val1 = Double.parseDouble(stack.get(size-2));
             res = compute(val1, val2);
             //Une fois le calcul effectue, on peut pop les operandes de la pile
             stack.pop();
             stack.pop();
-            stack.push(res);
-            hist.add(res);
-            return res;
+            stack.push(Double.toString(res));
+            hist.add(Double.toString(res));
+            return Double.toString(res);
         } else {
             throw new IllegalArgumentException("Not enough operand in stack!");
         }

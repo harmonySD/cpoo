@@ -10,10 +10,10 @@ public class RealNumber implements Expression {
         this.value = value;
     }
 
-    public double getValue(Stack<Double> stack, ArrayList<Double> hist) {
-        stack.push(value);
-        hist.add(value);
-        return value;
+    public String getValue(Stack<String> stack, ArrayList<String> hist) {
+        stack.push(Double.toString(value));
+        hist.add(Double.toString(value));
+        return Double.toString(value);
     }
 
     @Override
