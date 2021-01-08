@@ -16,6 +16,9 @@ public abstract class SimpleCallback implements Callback, Expression {
         double val;
 
         index = getPositiveIndex(lst);
+        if (index >= lst.size() || index < 0)
+            throw new IllegalArgumentException();
+
         val = lst.get(index);
         stack.push(val);
         hist.add(val);
