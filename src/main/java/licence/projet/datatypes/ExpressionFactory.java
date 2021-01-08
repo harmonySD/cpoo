@@ -23,6 +23,19 @@ public class ExpressionFactory {
     private boolean isBinaryOp(String input) {
         return BinaryOperatorExpr.isOperator(input);
     }
+    private static boolean isSymb(String input) {
+    	String regex = "^\\$";
+    	Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+    	Matcher matcher = pattern.matcher(input);
+    	return matcher.find();
+    }
+    private static boolean isBinary(String input) {
+    	String regex = "\\*|\\+|-|/|\\^";
+    	Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+    	Matcher matcher = pattern.matcher(input);
+    	return matcher.find();
+    }
+
 
     public Expression getExprFromString(String exprString, Stack<String> stack) {
         Expression expr;
@@ -34,7 +47,10 @@ public class ExpressionFactory {
             if (isCallback(exprString)) {
                 expr = cllbckFact.getCallback(exprString, stack);
 
+            } else if(isSymb(exprString)) {
+            	expr = new SymbNumber(exprString.charAt(1));
             } else if (isBinaryOp(exprString)) {
+            
                 expr = new BinaryOperatorExpr(exprString);
 
             } else {
