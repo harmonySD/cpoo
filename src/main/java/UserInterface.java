@@ -39,8 +39,16 @@ public class UserInterface {
                 // On passe a l'expression la pile et l'historique pour que le resultat y soit ajoute et que les operandes y soient extraits
                 // (on pourrait tout aussi bien ajouter le resultat a la pile et a l'historique ici)
                 lastExprEntered.getValue(stack, hist);
-                int index = stack.size() - 1;
-                System.out.println(stack.get(index));
+                int index, size;
+                size = stack.size();
+                //On verifie au cas ou une sauvegarde aurait videe la pile
+                if (size > 0) {
+                    index = size - 1;
+                    System.out.println(stack.get(index));
+                } else {
+                    System.out.println("Stack is empty, please enter some operands!");
+                }
+
 
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println("Not able to parse your input. Please enter a valid expression! (" + stack.size() + " element(s) currently in stack)\n");
