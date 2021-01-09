@@ -129,7 +129,7 @@ Pour les substitutions, on réécrit la méthode getValue de Expression et au li
 
 ## Choix d'implémentations
 
-L'utilisateur a la possibilité de rentrer un opérande par un opérande :
+L'utilisateur a la possibilité de rentrer une opérande par une opérande :
 ```
 > 4
 4.0
@@ -147,7 +147,7 @@ mais également de les rentrer en une ligne, ce qui revient exactement au meme :
 3.0
 7.0
 ```
-L'idée étant que cela ne devrait changer rien pour l'utilisateur, que ce soit en terme d'affichage ou de ce qui se passe avec la pile et l'historique. Aussi, dans l'exemple donné, 4 3 et 7 auront tous trois été ajoutés a l'historique.
+L'idée étant que cela ne devrait rien changer pour l'utilisateur, que ce soit en terme d'affichage ou de ce qui se passe avec la pile et l'historique. Aussi, dans l'exemple donné, 4 3 et 7 auront tous trois été ajoutés a l'historique.
 
 
 
