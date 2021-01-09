@@ -6,6 +6,8 @@ import java.util.Stack;
 
 
 public class Substitution implements Expression{
+	
+	/*test if there is a lettre in the string */
 	private boolean isAllReal(String l) {
 		final String esp= " ";
 		String mots[]=l.split(esp);
@@ -17,7 +19,8 @@ public class Substitution implements Expression{
 		return true;
 	}
 	
-	/*private String compute(String l,Stack<String> stack,ArrayList<String> hist) {
+	/* !Don't working! compute the value of expression l */
+	private String compute(String l,Stack<String> stack,ArrayList<String> hist) {
 		final String esp= " ";
 		int[]op=new int [100];
 		int k=0;
@@ -55,9 +58,10 @@ public class Substitution implements Expression{
 		return stack.pop();
 		
 		
-	}*/
+	}
 	
-
+/* unstacking 3 times and verify if the first pop wasn't a symbolic variable
+ * replace in the expression(3rd pop) value(2nd pop) of the symbolic varible (1st pop)*/
 	public String getValue(Stack<String> stack, ArrayList<String> hist) {
 		String s, in;
 		String l;
@@ -71,6 +75,7 @@ public class Substitution implements Expression{
 				for(int i=0;i<l.length();i++) {
 					if(l.charAt(i)==s.charAt(0)) {
 						l=l.substring(0,i)+in.substring(0,in.length())+l.substring(i+1);
+						//normalement regarde si l ne contient plus de variables symboliques et calcul l'expression
 						//if(isAllReal(l)) {
 							//stack.push(compute(l,stack,hist));
 						//}
