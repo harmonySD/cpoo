@@ -120,7 +120,7 @@ ce qu'elle fait est stocké dans un BinaryOperator<Double>).
 est factorisé dans la classe abstraite SimpleCallback (qui implemente Expression et Callback).
 
 -VarCallback : fonctionne grace a l'attribut set, propre a chaque instance, ainsi
-qu'a une Map<String, VarCallback> qui associe a chaque instance de VarCallback
+qu'a une Map<String, VarCallback>, propre a chaque instance de CallbackFactory, qui associe a chaque instance de VarCallback
 son nom (!toto a comme nom de variable de rappel toto) afin de pouvoir lire leur contenu
 a tout moment.
 
