@@ -10,6 +10,7 @@ public class StackCallback extends SimpleCallback {
     }
 
     public String getValue(Stack<String> stack, ArrayList<String> hist) {
+        //We use stack as the first param bc we want the callback to be from the stack
         return callback(stack, stack, hist);
     }
 }
