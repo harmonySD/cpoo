@@ -49,7 +49,7 @@ here x is changed in 3.
 UserInterface s'occupe de la relation entre la demande de l'utilisateur et les différentes classes.
 Une interface Expression implementée par RealNumber, SymbNumber, BynaryOperatorExpre, HistCalllBack ...
 
-Pour les subustitutions, on réécrite la méthode getValue de Expression et au lieu d'ajouter une nouvelle expression dans la pile et l'historique, on remplace dans l'expression la plus recente contenant la variable symbolique. Et empile cette nouvelle expression dans la pile.
+Pour les subustitutions, on réécrite la méthode getValue de Expression et au lieu d'ajouter une nouvelle expression dans la pile et l'historique, on remplace sa valeur dans l'expression la plus recente contenant la variable symbolique. Et empile cette nouvelle expression dans la pile.
 
 
 
