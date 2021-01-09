@@ -81,9 +81,13 @@ public class BinaryOperatorExpr implements Expression {
             int size = stack.size();
             //Cas du try : cas "classique" ou les deux operandes sont des nombres
             try {
-            	val2 = Double.parseDouble(stack.pop());
-                val1 = Double.parseDouble(stack.pop());
+                //On utilise get au lieu de pop au cas ou le try echoue
+            	val2 = Double.parseDouble(stack.get(size-1));
+                val1 = Double.parseDouble(stack.get(size-2));
                 res = compute(val1, val2);
+                //Une fois qu'on est a l'abri que le try echoue, on pop
+                stack.pop();
+            	stack.pop();
                 
                 stack.push(Double.toString(res));
                 hist.add(Double.toString(res));
