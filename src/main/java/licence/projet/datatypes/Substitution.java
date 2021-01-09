@@ -29,13 +29,9 @@ public class Substitution implements Expression{
 	public String getValue(Stack<String> stack, ArrayList<String> hist) {
 		String s, in;
 		String l;
-		//String t;
 		s=stack.pop();
 		in=stack.pop();
 		l=stack.pop();
-		System.out.println("s "+s);
-		System.out.println("in "+in);
-		System.out.println("l "+l);
 		try {
 			Double.parseDouble(s);	
 		}catch(Exception e) {
@@ -43,7 +39,7 @@ public class Substitution implements Expression{
 				for(int i=0;i<l.length();i++) {
 					//regarder plutot avec des strings
 					if(l.charAt(i)==s.charAt(0)) {
-						l=l.substring(0,i)+in.charAt(0)+l.substring(i+1);
+						l=l.substring(0,i)+in.substring(0,in.length())+l.substring(i+1);
 						stack.push(l);
 						return l;
 					}
