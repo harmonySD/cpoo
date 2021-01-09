@@ -8,7 +8,7 @@ Il s’agit plutôt d’un shell, c’est-à-dire une boucle d’entrée/évalua
 ## Comment ca marche ?
 
 Nous utilisons la syntaxe polonaise inversée (RPN). Celle-ci fonctionne grace a une pile (LIFO) d'opérandes.
-Quand l'utilisateur entre une opérande (par ex. un nombre réel), celui-ci est mis au sommet de la pile; 
+Quand l'utilisateur entre une opérande (par ex. un nombre réel), celle-ci est mise au sommet de la pile; 
 quand l'utilisateur entre une opération, le nombre nécessaire d'opérande est dépilé (on prend le sommet et on l'enlève), 
 puis le calcul est effectué, et enfin le résultat est empilé.
 
@@ -67,9 +67,10 @@ assigner une valeur qu'une seule fois (impossible de refaire !toto une fois que 
 
 ```
 
-Et on peux aussi utiliser des variables symboliques. Elles devront obligatoirement
-être précédé de $ et être une unique lettre. Pour substituer une variable symbolique
-il suffit d'indiquer dans une première requête la valeur qu'on veux lui assigner. 
+L'extension 4 consistant a ajouter des expressions et variables symboliques qui puisse etre substiuées par de vraies valeurs :
+Et on peut aussi utiliser des variables symboliques. Elles devront obligatoirement
+être précédées de $ et être composées d'une unique lettre. Pour substituer une variable symbolique
+il suffit d'indiquer dans une première requête la valeur qu'on veut lui assigner. 
 Puis de donner le nom de la variable symbolique (ne pas oublier le $ avant). 
 Et enfin de donner le mot magique subst. 
 Seule les subst précédés de ces deux autres étapes seront admis. 
@@ -87,16 +88,16 @@ Ici on substitue donc 3 a x.
 (Attention : l'extension n'est pas finie puisque lorsque l'expression ne contient plus
 de variables symboliques, le calcul n'est pas remplace par son resultat mais subsiste "tel quel")
 
-# Calculatrice évoluée - Détails des fonctionnalités et architecture
+# Calculatrice évoluée - Architecture et détails sur le projet
 
 ## Architecture
 
 UserInterface s'occupe de la relation entre la demande de l'utilisateur et les différentes classes.
-UserInterface s'occupe de "tout coordonner" : elle fait le lien entre l'utilisateur, et ce qu'il entre,
+UserInterface s'occupe de "tout coordonner" : elle fait le lien entre l'utilisateur, ce qu'il entre,
 et tout le traitement interne a la calculatrice. Plus precisément :
 UserInterface donne a une ExpressionFactory la string que l'utilisateur a entré, 
 l'ExpressionFactory renvoie une instance d'une classe qui implemente Expression*. 
-UserInterface récupère cette instance dont on sait juste que c'est une Expression 
+UserInterface récupère cette instance dont on sait juste que c'est une Expression. 
 Apres on appelle la methode getValue de l'expression qui va tout calculer
 s'il y a un traitement a faire (typiquement un opérateur ou un rappel) et met le 
 résultat du calcul dans la pile et l'historique. 
@@ -125,6 +126,28 @@ son nom (!toto a comme nom de variable de rappel toto) afin de pouvoir lire leur
 a tout moment.
 
 Pour les substitutions, on réécrit la méthode getValue de Expression et au lieu d'ajouter une nouvelle expression dans la pile et l'historique, on remplace sa valeur dans l'expression la plus recente contenant la variable symbolique. Et empile cette nouvelle expression dans la pile.
+
+## Choix d'implémentations
+
+L'utilisateur a la possibilité de rentrer un opérande par un opérande :
+```
+> 4
+4.0
+
+> 3
+3.0
+
+> +
+7.0
+```
+mais également de les rentrer en une ligne, ce qui revient exactement au meme :
+```
+> 4 3 +
+4.0
+3.0
+7.0
+```
+L'idée étant que cela ne devrait changer rien pour l'utilisateur, que ce soit en terme d'affichage ou de ce qui se passe avec la pile et l'historique. Aussi, dans l'exemple donné, 4 3 et 7 auront tous trois été ajoutés a l'historique.
 
 
 
