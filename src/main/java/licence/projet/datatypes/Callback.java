@@ -11,6 +11,6 @@ public interface Callback {
      * @param lst   Can either be the stack or the history
      * @param stack The stack used by the whole program to store and use values
      * @param hist  The history used by the whole program to store and load values
-    /*
+    */
     String callback(AbstractList<String> lst, Stack<String> stack, ArrayList<String> hist);
 }
