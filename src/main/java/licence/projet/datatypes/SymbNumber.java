@@ -6,12 +6,12 @@ import java.util.Stack;
 public class SymbNumber implements Expression{
     private final String value;
 
-    /*constructor */
+    /**constructor **/
     public SymbNumber(char value) {
         this.value = Character.toString(value);
     }
     
-    /*return value add in stack and history */
+    /**return value add in stack and history **/
     public String getValue(Stack<String> stack, ArrayList<String> hist) {
         stack.push(value);
         hist.add(value);
