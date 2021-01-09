@@ -54,15 +54,15 @@ public class BinaryOperatorExpr implements Expression {
     private String computeSymb(String symb1, String symb2) {
     	switch (op) {
     	case "+":
-    		return ("("+symb1+" "+op+" "+symb2+")");
+    		return ("( "+symb1+" "+op+" "+symb2+" )");
     	case "-":
-    		return ("("+symb1+" "+op+" "+symb2+")");
+    		return ("( "+symb1+" "+op+" "+symb2+" )");
     	case "*":
-    		return ("("+symb1+" "+op+" "+symb2+")");
+    		return ("( "+symb1+" "+op+" "+symb2+" )");
     	case "/":
-    		return ("("+symb1+" "+op+" "+symb2+")");
+    		return ("( "+symb1+" "+op+" "+symb2+" )");
     	case "^":
-    		return ("("+symb1+" "+op+" "+symb2+")");
+    		return ("( "+symb1+" "+op+" "+symb2+" )");
     	default:
     		throw new IllegalStateException("Operator "+op+" was not recognized!");
     	}
