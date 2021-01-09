@@ -9,6 +9,9 @@ import java.util.Stack;
 
 public class UserInterface {
 
+    /**
+    * Returns the user input after printing the command prompt
+    */
     public static String getInput() {
         //On cree un BufferedReader sur l'entree standard (ligne extraite d'un ancien projet de DUT)
         BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
@@ -26,6 +29,18 @@ public class UserInterface {
         }
     }
 
+
+    /**
+    * This method does all the work for the main loop :
+    * It splits the user input in case multiple operands where entered at the same time
+    * Then gets the corresponding Expression from the ExpressionFactory,
+    * then calls the getValue from the Expression and finally prints the top of
+    * the stack.
+    * @param input      The user's input as returned by getInput()
+    * @param exprFact   The ExpressionFactory instance used by this UserInterface
+    * @param stack      The stack used by the whole program to store and use values (operations consume the operands used)
+    * @param hist       The history used by the whole program to store and load values
+    */
     private static void parseInput(String input, ExpressionFactory exprFact, Stack<String> stack, ArrayList<String> hist) {
         String[] innerExpressions = input.split(" ");
         if (innerExpressions.length < 1) {
@@ -57,6 +72,7 @@ public class UserInterface {
         }
     }
 
+    
     public static void main(String[] args) {
         boolean readyToQuit = false;
         Stack<String> stack = new Stack<>();
