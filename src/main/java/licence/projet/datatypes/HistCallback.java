@@ -10,6 +10,7 @@ public class HistCallback extends SimpleCallback {
     }
 
     public String getValue(Stack<String> stack, ArrayList<String> hist) {
+        //We use history as the first param because we want the callback to be from the history
         return callback(hist, stack, hist);
     }
 }
