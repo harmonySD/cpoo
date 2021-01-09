@@ -25,8 +25,8 @@ public class CallbackFactory {
             if (accessType.equals("!")) {
                 if (!variables.keySet().contains(name)) {
                     String val = stack.pop();
-                    double value = Double.parseDouble(val);
-                    VarCallback varCallback = new VarCallback(name, value);
+                   // double value = Double.parseDouble(val);
+                    VarCallback varCallback = new VarCallback(name, val);
                     variables.put(name, varCallback);
                     return varCallback;
                 } else {

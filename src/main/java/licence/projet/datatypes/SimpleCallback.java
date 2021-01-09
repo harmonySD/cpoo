@@ -13,16 +13,16 @@ public abstract class SimpleCallback implements Callback, Expression {
 
     public String callback(AbstractList<String> lst, Stack<String> stack, ArrayList<String> hist) {
         int index;
-        double val;
+        String val;
 
         index = getPositiveIndex(lst);
         if (index >= lst.size() || index < 0)
             throw new IllegalArgumentException();
 
-        val = Double.parseDouble(lst.get(index));
-        stack.push(Double.toString(val));
-        hist.add(Double.toString(val));
-        return Double.toString(val);
+        val = lst.get(index); 
+        stack.push(val);
+        hist.add(val);
+        return val;
     }
 
     private int getPositiveIndex(AbstractList<String> lst) {

@@ -17,7 +17,7 @@ public class Substitution implements Expression{
 		return true;
 	}
 	
-	private String compute(String l,Stack<String> stack,ArrayList<String> hist) {
+	/*private String compute(String l,Stack<String> stack,ArrayList<String> hist) {
 		final String esp= " ";
 		int[]op=new int [100];
 		int k=0;
@@ -55,7 +55,7 @@ public class Substitution implements Expression{
 		return stack.pop();
 		
 		
-	}
+	}*/
 	
 
 	public String getValue(Stack<String> stack, ArrayList<String> hist) {
@@ -71,16 +71,18 @@ public class Substitution implements Expression{
 				for(int i=0;i<l.length();i++) {
 					if(l.charAt(i)==s.charAt(0)) {
 						l=l.substring(0,i)+in.substring(0,in.length())+l.substring(i+1);
-						if(isAllReal(l)) {
-							stack.push(compute(l,stack,hist));
-						}
+						//if(isAllReal(l)) {
+							//stack.push(compute(l,stack,hist));
+						//}
 						stack.push(l);
+						hist.add(l);
 						return l;
 						
 					}
 				}
 			}else {
 				stack.push(in);
+				hist.add(l);
 				return in;
 			}
 			
